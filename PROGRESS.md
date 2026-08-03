@@ -9,6 +9,9 @@
 
 주식 매크로 강의노트를 **매일 자동 갱신되는 정적 대시보드**로 만든다. 서버 없이 GitHub Actions가 하루 1회 데이터를 갱신하고 GitHub Pages로 서빙한다.
 
+- **라이브 URL:** https://britzpro.github.io/macro-dashboard/
+- **저장소:** https://github.com/BritzPro/macro-dashboard (public)
+
 원본 노트: `D:\공부\★주식\주식시장을 위한 매크로 강의노트 ....md`
 
 ## 2. 확정된 결정 (Decision Log)
@@ -55,8 +58,8 @@ config.py(지표+해석문) ─► fetch.py(값·변화) ─► interpret.py(현
 
 1. ~~FRED 키 연결 & series id 검증~~ ✅ 완료(2026-08-03). 30개 전부 실데이터.
    `RRPONTSYD`는 FRED 단위가 십억$라 표시 단위 교정함(다른 대차대조표 항목은 백만$).
-2. **GitHub 저장소 생성 + Pages 설정 + FRED_API_KEY Secret 등록** (README '배포' 참고).
-   - 사용자 확인 필요: 기존 저장소가 public인지 불명확. public 저장소에 push 예정.
+2. ~~GitHub 저장소 생성 + Pages 설정 + FRED_API_KEY Secret 등록~~ ✅ 완료(2026-08-03).
+   `BritzPro/macro-dashboard`(public), Pages=main/docs, Secret 등록, 라이브 확인.
 3. **2차 지표(FRED 밖)**: 금 현물, 코인(CoinGecko), ISM PMI, VIX 선물 만기구조, SKEW.
    → 별도 취득 함수를 `fred.py`가 아닌 새 소스 모듈로. config에 axis/cadence 추가.
 4. **해석문 심화** (content-writer): 각 지표 '현재 상황'을 노트 시나리오(5-6장)와 더 촘촘히 연결.
@@ -82,5 +85,7 @@ cd docs && python -m http.server 8899   # http://localhost:8899, 4개 탭 점검
 - 프로젝트 최초 스캐폴딩 완료. 파이프라인·대시보드·에이전트·워크플로·문서 생성.
 - 샘플 데이터로 4탭 렌더 검증 완료(로컬 http.server). 콘솔 에러 없음.
 - FRED 키 연결·검증: 30개 series 전부 실데이터 취득(폴백 0). `RRPONTSYD` 단위(십억$) 교정.
-- `git init`(main) + 첫 커밋 `0fc082a` 완료. (아직 원격 push 안 함 — GitHub 저장소 확인 후)
-- 다음: GitHub 저장소(public) 확인/생성 → push → Pages(main/docs) 설정 → FRED_API_KEY Secret 등록.
+- `git init`(main) + 첫 커밋 `0fc082a`, PROGRESS `8e658e2`.
+- **배포 완료**: `BritzPro/macro-dashboard`(public) 생성·push, FRED_API_KEY Secret 등록,
+  Pages(main/docs) 활성화. https://britzpro.github.io/macro-dashboard/ 라이브 확인(실데이터).
+- 다음: 2차 지표(금/코인/ISM/SKEW/VIX만기구조), 해석문 심화, 인터랙티브 차트(hover/zoom).
