@@ -60,8 +60,11 @@ config.py(지표+해석문) ─► fetch.py(값·변화) ─► interpret.py(현
    `RRPONTSYD`는 FRED 단위가 십억$라 표시 단위 교정함(다른 대차대조표 항목은 백만$).
 2. ~~GitHub 저장소 생성 + Pages 설정 + FRED_API_KEY Secret 등록~~ ✅ 완료(2026-08-03).
    `BritzPro/macro-dashboard`(public), Pages=main/docs, Secret 등록, 라이브 확인.
-3. **2차 지표(FRED 밖)**: 금 현물, 코인(CoinGecko), ISM PMI, VIX 선물 만기구조, SKEW.
-   → 별도 취득 함수를 `fred.py`가 아닌 새 소스 모듈로. config에 axis/cadence 추가.
+3. **2차 지표(FRED 밖)** — ✅ 대부분 완료(2026-08-03):
+   - 금(Yahoo GC=F)·BTC·ETH(Yahoo)·SKEW(Cboe)·VIX 만기구조(Cboe VIX/VIX3M) 추가. `scripts/sources.py`.
+   - ⚠️ **ISM PMI 미완**: 실측치 무료 소스가 없음(ISM 유료·FRED discontinued). 결정 필요:
+     (a) 보류, (b) FRED 무료 대체 proxy(지역 연준 제조업지수·CFNAI 등) 사용.
+   - 참고: stooq는 봇 차단(PoW)으로 사용 불가. Yahoo는 비공식 API라 best-effort(실패 시 샘플 폴백).
 4. **해석문 심화** (content-writer): 각 지표 '현재 상황'을 노트 시나리오(5-6장)와 더 촘촘히 연결.
 5. **인터랙티브 차트** (frontend, 사용자가 '기본 완성 후' 요청): hover 툴팁, 기간 확대/축소.
    현재는 자체 SVG 스파크라인 → 툴팁/줌 추가 시에도 외부 CDN 금지 유지.
@@ -80,6 +83,14 @@ cd docs && python -m http.server 8899   # http://localhost:8899, 4개 탭 점검
 ```
 
 ## 7. 일일 기록 (최신이 위)
+
+### 2026-08-03 (2차 지표)
+- FRED 밖 소스 모듈(`scripts/sources.py`) 추가: Yahoo(금·BTC·ETH), Cboe(SKEW, VIX 만기구조).
+- config에 `source`/`symbol` 필드로 소스 분기(fetch.py `_fetch_one`). 기존 FRED 경로는 그대로.
+- interpret: BTC/ETH(+1), VIXTS(-1) 방향 추가. VIXTS는 추세 대신 수준(콘탱고<1/백워데이션>1) 판정.
+- app.js: 큰 달러값 천단위 포맷($63,123), 비율 단위(0.84배) 추가.
+- 검증: 5개 전부 실데이터. 매일 탭 카드 20개, 콘솔 에러 없음. 총 35개 지표.
+- 남은 것: ISM(무료 소스 없음 — 사용자 결정 대기).
 
 ### 2026-08-03
 - 프로젝트 최초 스캐폴딩 완료. 파이프라인·대시보드·에이전트·워크플로·문서 생성.

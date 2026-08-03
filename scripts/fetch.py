@@ -7,6 +7,19 @@
 """
 from config import INDICATORS
 from fred import fetch_series
+import sources
+
+
+def _fetch_one(ind):
+    """지표의 source 필드에 따라 알맞은 취득 함수로 분기한다."""
+    src = ind.get("source", "fred")
+    if src == "yahoo":
+        return sources.fetch_yahoo(ind["symbol"], ind["id"], ind["freq"])
+    if src == "cboe":
+        return sources.fetch_cboe(ind["symbol"], ind["id"], ind["freq"])
+    if src == "vix_ts":
+        return sources.fetch_vix_termstructure(ind["id"], ind["freq"])
+    return fetch_series(ind["id"], ind["freq"])
 
 
 def _change(points):
@@ -24,7 +37,7 @@ def fetch_all():
     result = {}
     modes = []
     for ind in INDICATORS:
-        points, mode = fetch_series(ind["id"], ind["freq"])
+        points, mode = _fetch_one(ind)
         modes.append(mode)
         diff, pct = _change(points)
         result[ind["id"]] = {

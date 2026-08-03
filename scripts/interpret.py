@@ -14,7 +14,8 @@ DIRECTION = {
     "VIXCLS": -1, "BAMLH0A0HYM2": -1, "NFCI": -1, "STLFSI4": -1,
     "DFII10": -1, "DGS10": -1, "DGS30": -1, "DEXKOUS": -1, "UNRATE": -1,
     "PAYEMS": +1,
-    # 정책금리·기대인플레·유가·2년물·물가지수 등은 방향 단정 대신 중립(0)
+    "BTC": +1, "ETH": +1, "VIXTS": -1,
+    # 정책금리·기대인플레·유가·2년물·물가지수·금·SKEW 등은 방향 단정 대신 중립(0)
 }
 
 SIGNAL_LABEL = {"good": "우호적", "neutral": "중립", "bad": "부담"}
@@ -62,6 +63,18 @@ def interpret(fetched):
         if d["status"] != "ok":
             d["current"] = "데이터를 가져오지 못해 현재 판정을 보류한다."
             d["signal"] = "neutral"
+            continue
+        # VIX 만기구조는 추세보다 '현재 수준'(콘탱고/백워데이션)이 핵심
+        if ind_id == "VIXTS":
+            v = d["latest"]["value"]
+            if v >= 1.0:
+                sig, msg = "bad", f"현재 {v:.2f} — 백워데이션(근월>원월). 가까운 시점의 스트레스를 시장이 더 크게 보는 국면."
+            elif v <= 0.95:
+                sig, msg = "good", f"현재 {v:.2f} — 콘탱고(원월>근월)가 뚜렷. 단기 스트레스가 낮은 정상 국면."
+            else:
+                sig, msg = "neutral", f"현재 {v:.2f} — 콘탱고에 가깝지만 1에 근접. 스트레스 신호는 아직 약하다."
+            d["current"], d["signal"] = msg, sig
+            axis_scores[d["axis"]].append(score_map[sig])
             continue
         direction = DIRECTION.get(ind_id, 0)
         metric, is_abs = _trend(d["series"])
