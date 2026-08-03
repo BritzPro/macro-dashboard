@@ -20,6 +20,9 @@ DIRECTION = {
 
 SIGNAL_LABEL = {"good": "우호적", "neutral": "중립", "bad": "부담"}
 
+# ISM 대체 proxy: 추세보다 '0 기준 확장/수축'이 핵심 (CFNAI는 스케일이 달라 임계값 별도)
+ISM_PROXY = {"GACDISA066MSFRBNY", "BACTSAMFRBDAL", "CFNAI"}
+
 
 def _trend(series):
     """앞 3점 평균 대비 뒤 3점 평균의 변화. (metric, is_absolute)."""
@@ -74,6 +77,20 @@ def interpret(fetched):
             else:
                 sig, msg = "neutral", f"현재 {v:.2f} — 콘탱고에 가깝지만 1에 근접. 스트레스 신호는 아직 약하다."
             d["current"], d["signal"] = msg, sig
+            axis_scores[d["axis"]].append(score_map[sig])
+            continue
+        # ISM 대체 proxy는 0 기준 확장/수축으로 판정
+        if ind_id in ISM_PROXY:
+            v = d["latest"]["value"]
+            hi, lo = (0.0, -0.35) if ind_id == "CFNAI" else (2.0, -2.0)
+            if v > hi:
+                sig, state = "good", "확장"
+            elif v < lo:
+                sig, state = "bad", "수축·둔화"
+            else:
+                sig, state = "neutral", "경계 부근"
+            d["current"] = f"현재 {v:.2f} — {state} 국면(0이 확장/수축 경계)."
+            d["signal"] = sig
             axis_scores[d["axis"]].append(score_map[sig])
             continue
         direction = DIRECTION.get(ind_id, 0)
