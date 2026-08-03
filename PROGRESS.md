@@ -84,6 +84,10 @@ cd docs && python -m http.server 8899   # http://localhost:8899, 4개 탭 점검
 # 3) 작업 후: 이 파일 '일일 기록'에 한 줄 남기고, evaluator 기준 통과 시 커밋
 ```
 
+> **주의**: 매일 Action(bot)이 `docs/data/*`를 자동 커밋한다. 로컬에서 push 하기 전
+> 반드시 `git pull --rebase` 하고, 데이터 파일 충돌이 나면 `python scripts/build.py`로
+> 재빌드해 덮어쓴 뒤 `git add docs/data/* && git rebase --continue` 로 해결한다.
+
 ## 7. 일일 기록 (최신이 위)
 
 ### 2026-08-03 (2차 지표)
