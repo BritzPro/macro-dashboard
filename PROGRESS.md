@@ -90,6 +90,13 @@ cd docs && python -m http.server 8899   # http://localhost:8899, 4개 탭 점검
 
 ## 7. 일일 기록 (최신이 위)
 
+### 2026-08-03 (데이터 투명성)
+- "값이 가짜로 채워진 건 없나?" 확인 요청 → 전 지표 감사: **38/38 실데이터, 샘플 0**.
+- 투명성 기능 추가: 지표별 `data_source`(fred/yahoo/cboe/sample) 저장, build에 `data_status` 집계.
+  대시보드 상단 '실데이터 N/전체' 카운터, 카드마다 출처 표시, 샘플이면 빨간 경고 배지.
+- 키 유무 양방향 테스트로 경고 UI 검증. 커밋 `6da5719`.
+- 참고: FRED 키 없어도 Yahoo·Cboe 5개(금·BTC·ETH·SKEW·VIXTS)는 키 불필요라 실데이터 유지.
+
 ### 2026-08-03 (2차 지표)
 - FRED 밖 소스 모듈(`scripts/sources.py`) 추가: Yahoo(금·BTC·ETH), Cboe(SKEW, VIX 만기구조).
 - config에 `source`/`symbol` 필드로 소스 분기(fetch.py `_fetch_one`). 기존 FRED 경로는 그대로.
