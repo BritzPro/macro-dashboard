@@ -125,6 +125,12 @@ main { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
 .unavail { opacity: .55; }
 
+.card.sampled { border-color: var(--bad); }
+.sample-warn {
+  font-size: 12px; font-weight: 600; color: var(--bad);
+  background: var(--bad-bg); border-radius: 8px; padding: 6px 10px;
+}
+
 .foot { max-width: 1100px; margin: 10px auto 40px; padding: 0 20px; color: var(--muted); font-size: 12px; }
 
 @media (max-width: 560px) {

@@ -54,6 +54,7 @@ def fetch_all():
             "change": round(diff, 4) if diff is not None else None,
             "change_pct": round(pct, 2) if pct is not None else None,
             "status": "ok" if points else "unavailable",
+            "data_source": mode,  # fred / yahoo / cboe / sample
         }
     # 전체 소스 모드: 하나라도 fred면 fred, 전부 sample이면 sample
     overall_mode = "fred" if "fred" in modes else "sample"

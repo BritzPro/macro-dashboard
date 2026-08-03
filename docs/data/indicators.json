@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-08-03T14:17:42.990332+00:00",
+  "generated_at": "2026-08-03T14:31:51.970075+00:00",
   "source": "fred",
+  "data_status": {
+    "total": 38,
+    "sample": 0,
+    "real": 38,
+    "sample_ids": []
+  },
   "axes": {
     "rates": "금리 · 돈의 가격",
     "liquidity": "유동성 · 돈의 흐름",
@@ -946,6 +952,7 @@
       "change": 0.0,
       "change_pct": 0.0,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '횡보'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -1574,6 +1581,7 @@
       "change": 0.0,
       "change_pct": 0.0,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -2482,6 +2490,7 @@
       "change": 0.0,
       "change_pct": 0.0,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '횡보'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -3102,6 +3111,7 @@
       "change": 0.0,
       "change_pct": 0.0,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '횡보'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -3722,6 +3732,7 @@
       "change": 0.01,
       "change_pct": 0.27,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -4342,6 +4353,7 @@
       "change": 0.01,
       "change_pct": 0.24,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -4962,6 +4974,7 @@
       "change": 0.01,
       "change_pct": 0.21,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -5582,6 +5595,7 @@
       "change": 0.01,
       "change_pct": 0.19,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -6202,6 +6216,7 @@
       "change": 0.0,
       "change_pct": 0.0,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -6826,6 +6841,7 @@
       "change": 0.01,
       "change_pct": 0.44,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -6974,6 +6990,7 @@
       "change": -9188.0,
       "change_pct": -0.14,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 우호적인 방향이다.",
       "signal": "good"
     },
@@ -7122,6 +7139,7 @@
       "change": -77579.0,
       "change_pct": -2.53,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 우호적인 방향이다.",
       "signal": "good"
     },
@@ -7270,6 +7288,7 @@
       "change": 81153.0,
       "change_pct": 9.78,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -7890,6 +7909,7 @@
       "change": 1.075,
       "change_pct": 99.91,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 우호적인 방향이다.",
       "signal": "good"
     },
@@ -8038,6 +8058,7 @@
       "change": 3993.0,
       "change_pct": 0.09,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 우호적인 방향이다.",
       "signal": "good"
     },
@@ -8186,6 +8207,7 @@
       "change": -13933.0,
       "change_pct": -0.72,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -8826,6 +8848,7 @@
       "change": -1.1,
       "change_pct": -6.44,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -9478,6 +9501,7 @@
       "change": -0.03,
       "change_pct": -1.05,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 중립인 방향이다.",
       "signal": "neutral"
     },
@@ -9626,6 +9650,7 @@
       "change": -0.01,
       "change_pct": 1.84,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '횡보'이며, 이는 위험자산 환경에 중립인 방향이다.",
       "signal": "neutral"
     },
@@ -9774,6 +9799,7 @@
       "change": -0.1253,
       "change_pct": 17.87,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 우호적인 방향이다.",
       "signal": "good"
     },
@@ -9826,6 +9852,7 @@
       "change": -1.411,
       "change_pct": -0.42,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -9878,6 +9905,7 @@
       "change": -0.056,
       "change_pct": -0.02,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -9930,6 +9958,7 @@
       "change": -0.143,
       "change_pct": -0.11,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -9982,6 +10011,7 @@
       "change": 0.172,
       "change_pct": 0.13,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -10034,6 +10064,7 @@
       "change": -3.662,
       "change_pct": -1.26,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -10086,6 +10117,7 @@
       "change": 57.0,
       "change_pct": 0.04,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 중립인 방향이다.",
       "signal": "neutral"
     },
@@ -10138,6 +10170,7 @@
       "change": -0.1,
       "change_pct": -2.33,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 우호적인 방향이다.",
       "signal": "good"
     },
@@ -10194,6 +10227,7 @@
       "change": 9.9,
       "change_pct": 173.68,
       "status": "ok",
+      "data_source": "fred",
       "current": "현재 15.60 — 확장 국면(0이 확장/수축 경계).",
       "signal": "good"
     },
@@ -10250,6 +10284,7 @@
       "change": 1.3,
       "change_pct": null,
       "status": "ok",
+      "data_source": "fred",
       "current": "현재 1.30 — 경계 부근 국면(0이 확장/수축 경계).",
       "signal": "neutral"
     },
@@ -10302,6 +10337,7 @@
       "change": 0.17,
       "change_pct": -89.47,
       "status": "ok",
+      "data_source": "fred",
       "current": "현재 -0.02 — 경계 부근 국면(0이 확장/수축 경계).",
       "signal": "neutral"
     },
@@ -10906,6 +10942,7 @@
       "change": -14.12,
       "change_pct": -0.96,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -11510,6 +11547,7 @@
       "change": -7.49,
       "change_pct": -8.16,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -12118,6 +12156,7 @@
       "change": -8.49,
       "change_pct": -8.46,
       "status": "ok",
+      "data_source": "fred",
       "current": "최근 흐름은 '상승'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -12628,20 +12667,21 @@
         },
         {
           "date": "2026-08-03",
-          "value": 4085.6001
+          "value": 4089.2
         }
       ],
       "latest": {
         "date": "2026-08-03",
-        "value": 4085.6001
+        "value": 4089.2
       },
       "prev": {
         "date": "2026-07-31",
         "value": 4049.1001
       },
-      "change": 36.5,
-      "change_pct": 0.9,
+      "change": 40.0999,
+      "change_pct": 0.99,
       "status": "ok",
+      "data_source": "yahoo",
       "current": "최근 흐름은 '하락'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -13380,20 +13420,21 @@
         },
         {
           "date": "2026-08-03",
-          "value": 63349.8008
+          "value": 63790.9609
         }
       ],
       "latest": {
         "date": "2026-08-03",
-        "value": 63349.8008
+        "value": 63790.9609
       },
       "prev": {
         "date": "2026-08-02",
         "value": 63482.0
       },
-      "change": -132.1992,
-      "change_pct": -0.21,
+      "change": 308.9609,
+      "change_pct": 0.49,
       "status": "ok",
+      "data_source": "yahoo",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -14132,20 +14173,21 @@
         },
         {
           "date": "2026-08-03",
-          "value": 1855.14
+          "value": 1867.1
         }
       ],
       "latest": {
         "date": "2026-08-03",
-        "value": 1855.14
+        "value": 1867.1
       },
       "prev": {
         "date": "2026-08-02",
         "value": 1882.522
       },
-      "change": -27.382,
-      "change_pct": -1.45,
+      "change": -15.422,
+      "change_pct": -0.82,
       "status": "ok",
+      "data_source": "yahoo",
       "current": "최근 흐름은 '하락'이며, 이는 위험자산 환경에 부담인 방향이다.",
       "signal": "bad"
     },
@@ -14662,6 +14704,7 @@
       "change": 1.33,
       "change_pct": 0.95,
       "status": "ok",
+      "data_source": "cboe",
       "current": "최근 흐름은 '횡보'. 방향만으로 우호·부담을 단정하기 어려운 지표라 다른 축과 함께 읽는다.",
       "signal": "neutral"
     },
@@ -15178,6 +15221,7 @@
       "change": -0.0357,
       "change_pct": -4.07,
       "status": "ok",
+      "data_source": "cboe",
       "current": "현재 0.84 — 콘탱고(원월>근월)가 뚜렷. 단기 스트레스가 낮은 정상 국면.",
       "signal": "good"
     }

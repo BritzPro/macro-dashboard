@@ -11,10 +11,17 @@
     return;
   }
 
-  // ── 상단 배지 ──
+  // ── 상단 배지: 실데이터/샘플 카운터 ──
+  var SRC_KO = { fred: "FRED", yahoo: "Yahoo", cboe: "Cboe", sample: "샘플(추정)" };
   var badge = document.getElementById("source-badge");
-  badge.textContent = DATA.source === "fred" ? "실데이터 (FRED)" : "샘플 데이터";
-  badge.className = "badge " + (DATA.source === "fred" ? "fred" : "sample");
+  var ds = DATA.data_status || { real: 0, total: 0, sample: 0 };
+  if (ds.sample === 0) {
+    badge.textContent = "실데이터 " + ds.real + "/" + ds.total;
+    badge.className = "badge fred";
+  } else {
+    badge.textContent = "⚠ 샘플 " + ds.sample + "개 포함 (" + ds.real + "/" + ds.total + " 실데이터)";
+    badge.className = "badge sample";
+  }
   try {
     var dt = new Date(DATA.generated_at);
     document.getElementById("updated").textContent =
@@ -72,14 +79,21 @@
     var unavail = ind.status !== "ok";
     var latest = ind.latest ? ind.latest.value : null;
     var sig = ind.signal || "neutral";
+    var source = ind.data_source || "fred";
+    var isSample = source === "sample";
+    var sampleWarn = isSample
+      ? '<div class="sample-warn">⚠ 이 값은 소스 연결 실패로 <b>샘플(추정)</b>입니다 — 실제 값 아님</div>'
+      : "";
     return (
-      '<div class="card' + (unavail ? " unavail" : "") + '">' +
+      '<div class="card' + (unavail ? " unavail" : "") + (isSample ? " sampled" : "") + '">' +
         '<div class="card-head">' +
           '<div><div class="card-name">' + ind.name + '</div>' +
-          '<div class="card-id">' + ind.id + " · " + (ind.latest ? ind.latest.date : "") + "</div></div>" +
+          '<div class="card-id">' + ind.id + " · " + (SRC_KO[source] || source) +
+            " · " + (ind.latest ? ind.latest.date : "") + "</div></div>" +
           '<div class="card-val"><span class="v">' + fmtValue(ind.unit, latest) + "</span>" +
           "<div>" + changeHtml(ind) + "</div></div>" +
         "</div>" +
+        sampleWarn +
         sparkline(ind.series, sig) +
         '<div class="signal-row">현재 판정: <span class="tag ' + sig + '">' + SIGNAL_KO[sig] + "</span></div>" +
         '<div class="interp">' +

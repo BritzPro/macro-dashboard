@@ -20,9 +20,18 @@ def main():
     fetched, mode = fetch_all()
     signals = interpret(fetched)
 
+    sample_ids = [k for k, v in fetched.items() if v.get("data_source") == "sample"]
+    data_status = {
+        "total": len(fetched),
+        "sample": len(sample_ids),
+        "real": len(fetched) - len(sample_ids),
+        "sample_ids": sample_ids,
+    }
+
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": mode,  # "fred" 또는 "sample"
+        "data_status": data_status,
         "axes": AXES,
         "overall": signals["overall"],
         "axis_signal": signals["axis_signal"],
@@ -42,7 +51,9 @@ def main():
         f.write(";")
 
     print(f"완료 → {os.path.relpath(OUT_PATH)}")
-    print(f"소스={mode}, 지표={len(fetched)}개, 종합신호={signals['overall']['label']}")
+    print(f"실데이터 {data_status['real']}/{data_status['total']}개, "
+          f"샘플폴백 {data_status['sample']}개 {sample_ids or ''}, "
+          f"종합신호={signals['overall']['label']}")
 
 
 if __name__ == "__main__":
