@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>매크로 대시보드</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>매크로 대시보드</h1>
+      <div class="meta">
+        <span id="source-badge" class="badge">—</span>
+        <span id="updated" class="updated">—</span>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="overview">종합 상황판</button>
+      <button class="tab" data-tab="d">매일</button>
+      <button class="tab" data-tab="w">매주</button>
+      <button class="tab" data-tab="m">매월</button>
+    </nav>
+  </header>
+
+  <main id="view"><!-- 렌더링 영역 --></main>
+
+  <footer class="foot">
+    <p>데이터 출처: FRED (Federal Reserve Bank of St. Louis). 이 페이지는 교육용이며 투자조언이 아니다.</p>
+  </footer>
+
+  <!-- 빌드가 생성하는 데이터. file:// 로 열어도 동작하도록 script로 주입 -->
+  <script src="data/data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

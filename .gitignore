@@ -1,0 +1,12 @@
+# 파이썬
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 로컬 환경변수 (FRED_API_KEY 는 GitHub Secret 으로 관리, 커밋 금지)
+.env
+
+# OS
+.DS_Store
+Thumbs.db
