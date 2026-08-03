@@ -46,16 +46,17 @@ config.py(지표+해석문) ─► fetch.py(값·변화) ─► interpret.py(현
 - [x] GitHub Actions 일일 갱신 워크플로
 - [x] README / PROGRESS
 
-**현재 소스 = 샘플(합성) 데이터.** FRED 키 연결 전이라 값은 임의의 현실적 시계열이다.
+**현재 소스 = FRED 실데이터.** 키 연결·검증 완료. 30개 series 전부 실데이터로 취득(폴백 0건).
+로컬 실행 시 `FRED_API_KEY` 환경변수 필요(키는 저장소에 커밋 안 함).
 
 ## 5. 남은 작업 (TODO)
 
 우선순위 순:
 
-1. **FRED 키 연결 & series id 검증** — 키를 넣고 `python scripts/build.py` 실행 후,
-   샘플 폴백으로 빠지는(로그에 `실패 → 샘플 폴백`) series id를 골라 config에서 교정.
-   확인 필요 후보: `RRPONTSYAWARD`, `TREAST`, `WSHOMCB`, `WTREGEN`, `RRPONTSYD`, `STLFSI4`, `DFEDTARU`.
+1. ~~FRED 키 연결 & series id 검증~~ ✅ 완료(2026-08-03). 30개 전부 실데이터.
+   `RRPONTSYD`는 FRED 단위가 십억$라 표시 단위 교정함(다른 대차대조표 항목은 백만$).
 2. **GitHub 저장소 생성 + Pages 설정 + FRED_API_KEY Secret 등록** (README '배포' 참고).
+   - 사용자 확인 필요: 기존 저장소가 public인지 불명확. public 저장소에 push 예정.
 3. **2차 지표(FRED 밖)**: 금 현물, 코인(CoinGecko), ISM PMI, VIX 선물 만기구조, SKEW.
    → 별도 취득 함수를 `fred.py`가 아닌 새 소스 모듈로. config에 axis/cadence 추가.
 4. **해석문 심화** (content-writer): 각 지표 '현재 상황'을 노트 시나리오(5-6장)와 더 촘촘히 연결.
@@ -79,5 +80,7 @@ cd docs && python -m http.server 8899   # http://localhost:8899, 4개 탭 점검
 
 ### 2026-08-03
 - 프로젝트 최초 스캐폴딩 완료. 파이프라인·대시보드·에이전트·워크플로·문서 생성.
-- 샘플 데이터로 4탭 렌더 검증 완료(로컬 http.server). 종합신호=neutral(샘플이라 무작위).
-- 다음: FRED 키 연결 → series id 검증 → GitHub 저장소/Pages 설정.
+- 샘플 데이터로 4탭 렌더 검증 완료(로컬 http.server). 콘솔 에러 없음.
+- FRED 키 연결·검증: 30개 series 전부 실데이터 취득(폴백 0). `RRPONTSYD` 단위(십억$) 교정.
+- `git init`(main) + 첫 커밋 `0fc082a` 완료. (아직 원격 push 안 함 — GitHub 저장소 확인 후)
+- 다음: GitHub 저장소(public) 확인/생성 → push → Pages(main/docs) 설정 → FRED_API_KEY Secret 등록.
