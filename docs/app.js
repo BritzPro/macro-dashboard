@@ -38,7 +38,7 @@
     if (unit === "원") return v.toFixed(1) + "원";
     if (unit === "$") return v >= 1000 ? "$" + Math.round(v).toLocaleString("en-US") : "$" + v.toFixed(1);
     if (unit === "ratio") return v.toFixed(2) + "배";
-    if (unit === "pt") return v.toFixed(1);
+    if (unit === "pt") return v >= 1000 ? v.toLocaleString("en-US", { maximumFractionDigits: 1 }) : v.toFixed(1);
     return v.toFixed(1);
   }
 

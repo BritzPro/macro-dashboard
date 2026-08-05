@@ -15,6 +15,7 @@ DIRECTION = {
     "DFII10": -1, "DGS10": -1, "DGS30": -1, "DEXKOUS": -1, "UNRATE": -1,
     "PAYEMS": +1,
     "BTC": +1, "ETH": +1, "VIXTS": -1,
+    "KOSPI": +1, "KOSDAQ": +1, "NASDAQ": +1,
     # 정책금리·기대인플레·유가·2년물·물가지수·금·SKEW 등은 방향 단정 대신 중립(0)
 }
 

@@ -30,7 +30,8 @@ def fetch_yahoo(symbol, series_id, freq):
     """Yahoo Finance 일별 종가."""
     if requests is None:
         return _sample(series_id, freq), "sample"
-    url = "https://query1.finance.yahoo.com/v8/finance/chart/" + symbol
+    # 지수 심볼의 '^'(예: ^KS11)는 URL 인코딩 필요
+    url = "https://query1.finance.yahoo.com/v8/finance/chart/" + symbol.replace("^", "%5E")
     try:
         r = requests.get(url, params={"range": "6mo", "interval": "1d"},
                          headers=_HEADERS, timeout=20)
