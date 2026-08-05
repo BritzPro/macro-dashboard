@@ -76,6 +76,11 @@ config.py(지표+해석문) ─► fetch.py(값·변화) ─► interpret.py(현
 6. **유동성 '보유증권 vs 대출' 구분** (노트 4-2): Loans 계열 series 추가.
 7. **종합 판정 고도화**: 현재 종합신호는 축별 단순 평균(interpret.py). 노트 10장의
    '투자하기 좋은/좋지 않은 환경' 체크리스트를 규칙으로 반영해 더 정교하게.
+8. **신용잔고(margin)** — 2026-08-05 조사 후 **보류 결정**(깨끗한 무료 API 없음).
+   - 미국 FINRA margin debt: 월간, xlsx/HTML만("data feed 없음"), 파일경로 변동·openpyxl 필요.
+     값 예: Jun-26 $1,502,072M. 페이지: finra.org/investors/.../margin-statistics.
+   - 한국 신용거래융자: KRX(data.krx.co.kr) OTP 스크래핑만 가능, 매우 불안정(테스트 시 hang).
+   - 재개 조건: 안정적 무료 소스가 생기면 추가. 넣게 되면 미국은 매월, 한국은 매일 탭.
 
 작업 후 반드시: `python scripts/build.py`로 검증 → 이 파일 일일 기록에 append →
 `git pull --rebase`(§6 주의) → 커밋·push. 라이브: https://britzpro.github.io/macro-dashboard/
@@ -102,7 +107,7 @@ cd docs && python -m http.server 8899   # http://localhost:8899, 4개 탭 점검
 - 매일 탭에 주가지수 3종 추가(Yahoo): 코스피(^KS11)·코스닥(^KQ11)·나스닥종합(^IXIC). risk 축, DIRECTION +1.
 - sources.fetch_yahoo: 지수 심볼 '^' URL 인코딩(%5E) 처리. app.js: pt 단위 천단위 구분.
 - 총 41개 지표, 41/41 실데이터 검증. 확대 차트도 지수에서 정상.
-- 신용잔고(한국 KRX/KOFIA·미국 FINRA)는 무료 소스 조사 중 → 아래 TODO.
+- 신용잔고(한국 KRX/KOFIA·미국 FINRA): 조사 결과 깨끗한 무료 API 없음 → **보류 결정**(TODO 8번 참고).
 
 ### 2026-08-05 (인터랙티브 차트)
 - 확대 차트 모달 추가(frontend only): 카드 스파크라인 클릭 → 큰 차트.
