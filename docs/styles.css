@@ -95,6 +95,27 @@ main { max-width: 1100px; margin: 0 auto; padding: 20px; }
 .axis-card .name { font-weight: 600; font-size: 14px; }
 .axis-card .state { font-size: 13px; white-space: nowrap; }
 .axis-card .axis-read { font-size: 13px; color: var(--text); margin-top: 8px; line-height: 1.55; }
+.axis-card.clickable { cursor: pointer; transition: border-color .15s, transform .05s; }
+.axis-card.clickable:hover { border-color: var(--line); }
+.axis-card.clickable:active { transform: translateY(1px); }
+.axis-card .axis-more { margin-top: 10px; font-size: 12px; color: var(--line); font-weight: 600; }
+
+/* 축 심층 해설 모달 본문 */
+.axis-body { margin-top: 6px; }
+.ax-sec { margin-top: 14px; font-size: 14px; line-height: 1.7; }
+.ax-sec .k { display: block; color: var(--muted); font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.ax-sec.cur { background: var(--panel-2); border-radius: 10px; padding: 12px 14px; }
+.ax-ind-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.ax-ind {
+  appearance: none; text-align: left; cursor: pointer;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  color: var(--text); font-size: 13px;
+}
+.ax-ind:hover { border-color: var(--line); background: var(--panel-2); }
+.ax-ind-name { font-weight: 500; }
+.ax-ind-right { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.ax-ind-val { font-weight: 700; }
 .state.good { color: var(--good); } .state.neutral { color: var(--neutral); } .state.bad { color: var(--bad); }
 
 .section-title { font-size: 13px; color: var(--muted); font-weight: 600; margin: 22px 0 10px; text-transform: none; }

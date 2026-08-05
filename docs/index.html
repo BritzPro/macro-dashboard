@@ -29,6 +29,20 @@
     <p>데이터 출처: FRED (Federal Reserve Bank of St. Louis). 이 페이지는 교육용이며 투자조언이 아니다.</p>
   </footer>
 
+  <!-- 축 심층 해설 모달 (종합 상황판의 축 카드 클릭 시 열림) -->
+  <div id="axis-modal" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div>
+          <div id="am-name" class="modal-name"></div>
+          <div id="am-sub" class="modal-sub"></div>
+        </div>
+        <button id="am-close" class="modal-close" aria-label="닫기">✕</button>
+      </div>
+      <div id="am-body" class="axis-body"></div>
+    </div>
+  </div>
+
   <!-- 확대 차트 모달 (지표 카드 차트 클릭 시 열림) -->
   <div id="chart-modal" class="modal-backdrop" hidden>
     <div class="modal" role="dialog" aria-modal="true">

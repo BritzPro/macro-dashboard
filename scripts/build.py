@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 
 from fetch import fetch_all
 from interpret import interpret
-from config import AXES
+from config import AXES, AXIS_GUIDE
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "docs", "data")
 OUT_PATH = os.path.join(OUT_DIR, "indicators.json")
@@ -36,6 +36,7 @@ def main():
         "overall": signals["overall"],
         "axis_signal": signals["axis_signal"],
         "commentary": signals["commentary"],
+        "axis_guide": AXIS_GUIDE,
         "indicators": fetched,
     }
 

@@ -133,10 +133,11 @@
       if (!s) return;
       var read = c.reads && c.reads[a] ? c.reads[a] : "";
       html +=
-        '<div class="axis-card ' + s.label + '">' +
+        '<div class="axis-card clickable ' + s.label + '" data-axis="' + a + '">' +
           '<div class="axis-card-top"><span class="name">' + s.title + "</span>" +
           '<span class="state ' + s.label + '"><span class="dot ' + s.label + '"></span>' + SIGNAL_KO[s.label] + "</span></div>" +
           (read ? '<div class="axis-read">' + read + "</div>" : "") +
+          '<div class="axis-more">자세히 보기 ›</div>' +
         "</div>";
     });
     html += "</div>";
@@ -305,13 +306,60 @@
     document.body.style.overflow = "";
   }
 
-  // 카드 차트 클릭 → 확대
+  // 카드 차트 클릭 → 확대 / 종합 상황판 축 카드 클릭 → 심층 해설
   view.addEventListener("click", function (e) {
     var sp = e.target.closest(".spark-wrap");
-    if (!sp) return;
-    var c = sp.closest(".card");
-    if (c && c.dataset.ind) openChart(c.dataset.ind);
+    if (sp) {
+      var c = sp.closest(".card");
+      if (c && c.dataset.ind) openChart(c.dataset.ind);
+      return;
+    }
+    var ax = e.target.closest(".axis-card.clickable");
+    if (ax && ax.dataset.axis) openAxis(ax.dataset.axis);
   });
+
+  // ── 축 심층 해설 모달 ──
+  var axisModal = document.getElementById("axis-modal");
+  function openAxis(axis) {
+    var s = DATA.axis_signal[axis];
+    if (!s) return;
+    var guide = (DATA.axis_guide && DATA.axis_guide[axis]) || {};
+    var read = (DATA.commentary && DATA.commentary.reads && DATA.commentary.reads[axis]) || "";
+    document.getElementById("am-name").innerHTML =
+      (DATA.axes[axis] || axis) + ' <span class="tag ' + s.label + '">' + SIGNAL_KO[s.label] + "</span>";
+    document.getElementById("am-sub").textContent = "종합 상황판의 5축 중 하나 · 노트의 5단계 해석법";
+
+    var inds = Object.keys(DATA.indicators)
+      .map(function (k) { return DATA.indicators[k]; })
+      .filter(function (i) { return i.axis === axis; });
+    var listHtml = inds.map(function (i) {
+      var sg = i.signal || "neutral";
+      return '<button class="ax-ind" data-ind="' + i.id + '">' +
+        '<span class="ax-ind-name">' + i.name + "</span>" +
+        '<span class="ax-ind-right"><span class="ax-ind-val">' + fmtValue(i.unit, i.latest ? i.latest.value : null) + "</span>" +
+        '<span class="tag ' + sg + '">' + SIGNAL_KO[sg] + "</span></span></button>";
+    }).join("");
+
+    document.getElementById("am-body").innerHTML =
+      (read ? '<div class="ax-sec cur"><span class="k">지금 이 축의 진단</span>' + read + "</div>" : "") +
+      (guide.what ? '<div class="ax-sec"><span class="k">이 축은 무엇을 보나</span>' + guide.what + "</div>" : "") +
+      (guide.how ? '<div class="ax-sec"><span class="k">어떻게 해석하나</span>' + guide.how + "</div>" : "") +
+      (guide.history ? '<div class="ax-sec"><span class="k">과거 · 맥락</span>' + guide.history + "</div>" : "") +
+      '<div class="ax-sec"><span class="k">이 축의 지표 (클릭하면 차트로)</span><div class="ax-ind-list">' + listHtml + "</div></div>";
+
+    axisModal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function closeAxis() { axisModal.hidden = true; document.body.style.overflow = ""; }
+
+  document.getElementById("am-body").addEventListener("click", function (e) {
+    var b = e.target.closest(".ax-ind");
+    if (!b) return;
+    closeAxis();
+    openChart(b.dataset.ind);
+  });
+  document.getElementById("am-close").addEventListener("click", closeAxis);
+  axisModal.addEventListener("click", function (e) { if (e.target === axisModal) closeAxis(); });
   // 기간 버튼
   document.getElementById("cm-ranges").addEventListener("click", function (e) {
     var b = e.target.closest(".rbtn");
@@ -324,7 +372,11 @@
   // 닫기
   document.getElementById("cm-close").addEventListener("click", closeChart);
   modal.addEventListener("click", function (e) { if (e.target === modal) closeChart(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeChart(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (!modal.hidden) closeChart();
+    if (!axisModal.hidden) closeAxis();
+  });
 
   render("overview");
 })();
