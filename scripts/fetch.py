@@ -5,7 +5,7 @@
 지표 도메인(금리/유동성/위험선호/물가/시장)은 config.INDICATORS의 axis 필드로
 구분되며, 여기서는 그 목록을 그대로 순회한다.
 """
-from config import INDICATORS
+from config import INDICATORS, DETAILS
 from fred import fetch_series
 import sources
 
@@ -48,6 +48,7 @@ def fetch_all():
             "unit": ind["unit"],
             "meaning": ind["meaning"],
             "read": ind["read"],
+            "detail": DETAILS.get(ind["id"], ind["meaning"]),
             "series": points,
             "latest": points[-1] if points else None,
             "prev": points[-2] if len(points) > 1 else None,

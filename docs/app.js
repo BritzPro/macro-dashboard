@@ -282,9 +282,10 @@
       return '<button class="rbtn' + active + '" data-days="' + (rr.d || "") + '">' + rr.k + "</button>";
     }).join("");
     document.getElementById("cm-interp").innerHTML =
-      '<div class="current">' + ind.current + "</div>" +
-      '<div class="mini"><span class="k">의미</span>' + ind.meaning + "</div>" +
-      '<div class="mini"><span class="k">읽는 법</span>' + ind.read + "</div>";
+      '<div class="current"><span class="k">지금 상황</span>' + ind.current + "</div>" +
+      '<div class="mini"><span class="k">이 지표는? (쉽게)</span>' + (ind.detail || ind.meaning) + "</div>" +
+      '<div class="mini"><span class="k">읽는 법</span>' + ind.read + "</div>" +
+      '<div class="mini axis-note"><span class="k">이 지표가 속한 축</span>' + (DATA.axes[ind.axis] || ind.axis) + "</div>";
     renderChart();
     modal.hidden = false;
     document.body.style.overflow = "hidden";
