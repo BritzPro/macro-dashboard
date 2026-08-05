@@ -76,7 +76,14 @@ main { max-width: 1100px; margin: 0 auto; padding: 20px; }
 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 6px; }
 .dot.good { background: var(--good); } .dot.neutral { background: var(--neutral); } .dot.bad { background: var(--bad); }
 
-.axis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; margin-bottom: 8px; }
+.briefing {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 18px; box-shadow: var(--shadow); margin-bottom: 18px;
+}
+.briefing .lbl { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.briefing p { margin: 0; font-size: 15px; line-height: 1.65; }
+
+.axis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 12px; margin-bottom: 8px; }
 .axis-card {
   background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
   padding: 14px; box-shadow: var(--shadow); border-left: 4px solid var(--border);
@@ -84,8 +91,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 20px; }
 .axis-card.good { border-left-color: var(--good); }
 .axis-card.neutral { border-left-color: var(--neutral); }
 .axis-card.bad { border-left-color: var(--bad); }
+.axis-card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .axis-card .name { font-weight: 600; font-size: 14px; }
-.axis-card .state { font-size: 13px; margin-top: 4px; }
+.axis-card .state { font-size: 13px; white-space: nowrap; }
+.axis-card .axis-read { font-size: 13px; color: var(--text); margin-top: 8px; line-height: 1.55; }
 .state.good { color: var(--good); } .state.neutral { color: var(--neutral); } .state.bad { color: var(--bad); }
 
 .section-title { font-size: 13px; color: var(--muted); font-weight: 600; margin: 22px 0 10px; text-transform: none; }

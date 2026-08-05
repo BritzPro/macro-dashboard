@@ -113,6 +113,7 @@
   // ── 종합 상황판 ──
   function renderOverview() {
     var o = DATA.overall;
+    var c = DATA.commentary || { reads: {}, summary: "" };
     var html =
       '<div class="headline">' +
         '<div class="lbl">오늘의 종합 판정</div>' +
@@ -120,18 +121,26 @@
         '<div class="desc">' + o.headline + "</div>" +
       "</div>";
 
+    if (c.summary) {
+      html += '<div class="briefing"><div class="lbl">📋 시황 브리핑 — 여러 지표를 종합한 해석</div>' +
+        "<p>" + c.summary + "</p></div>";
+    }
+
+    html += '<p class="section-title">축별 진단 (금리 → 유동성 → 할인율 → 위험선호 → 경기·물가)</p>';
     html += '<div class="axis-grid">';
     ["rates", "liquidity", "discount", "risk", "macro"].forEach(function (a) {
       var s = DATA.axis_signal[a];
       if (!s) return;
+      var read = c.reads && c.reads[a] ? c.reads[a] : "";
       html +=
         '<div class="axis-card ' + s.label + '">' +
-          '<div class="name">' + s.title + "</div>" +
-          '<div class="state ' + s.label + '"><span class="dot ' + s.label + '"></span>' + SIGNAL_KO[s.label] + "</div>" +
+          '<div class="axis-card-top"><span class="name">' + s.title + "</span>" +
+          '<span class="state ' + s.label + '"><span class="dot ' + s.label + '"></span>' + SIGNAL_KO[s.label] + "</span></div>" +
+          (read ? '<div class="axis-read">' + read + "</div>" : "") +
         "</div>";
     });
     html += "</div>";
-    html += '<p class="section-title">각 축을 눌러 상세 지표는 매일·매주·매월 탭에서 확인하세요.</p>';
+    html += '<p class="section-title">각 지표 차트를 클릭하면 상세 설명과 함께 크게 볼 수 있어요. (매일·매주·매월 탭)</p>';
     view.innerHTML = html;
   }
 

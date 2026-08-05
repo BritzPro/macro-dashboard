@@ -35,6 +35,7 @@ def main():
         "axes": AXES,
         "overall": signals["overall"],
         "axis_signal": signals["axis_signal"],
+        "commentary": signals["commentary"],
         "indicators": fetched,
     }
 
