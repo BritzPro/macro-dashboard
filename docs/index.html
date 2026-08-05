@@ -29,6 +29,23 @@
     <p>데이터 출처: FRED (Federal Reserve Bank of St. Louis). 이 페이지는 교육용이며 투자조언이 아니다.</p>
   </footer>
 
+  <!-- 확대 차트 모달 (지표 카드 차트 클릭 시 열림) -->
+  <div id="chart-modal" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div>
+          <div id="cm-name" class="modal-name"></div>
+          <div id="cm-sub" class="modal-sub"></div>
+        </div>
+        <button id="cm-close" class="modal-close" aria-label="닫기">✕</button>
+      </div>
+      <div id="cm-ranges" class="ranges"></div>
+      <div id="cm-stats" class="chart-stats"></div>
+      <div id="cm-chart" class="chart-area"></div>
+      <div id="cm-interp" class="modal-interp"></div>
+    </div>
+  </div>
+
   <!-- 빌드가 생성하는 데이터. file:// 로 열어도 동작하도록 script로 주입 -->
   <script src="data/data.js"></script>
   <script src="app.js"></script>
